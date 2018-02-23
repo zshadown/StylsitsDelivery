@@ -30,6 +30,7 @@ public class SdService {
         this.connection = connection;
     }
 
+    //////////////////////////////////////////////////////
     protected ProvincesEntity getProvincesEntity() {
         if(getConnection() != null) {
             if(provincesEntity == null) {
@@ -40,7 +41,8 @@ public class SdService {
         return provincesEntity;
     }
 
-    protected DistrictsEntity getDistricts(){
+    //////////////////////////////////////////////////////
+    protected DistrictsEntity getDistrictsEntity(){
         if(getConnection() != null) {
             if(districtsEntity == null) {
                districtsEntity = new DistrictsEntity();
@@ -50,7 +52,8 @@ public class SdService {
         return districtsEntity;
     }
 
-    protected ServicesEntity getServices(){
+    //////////////////////////////////////////////////////
+    protected ServicesEntity getServicesEntity(){
         if(getConnection() != null) {
             if(servicesEntity == null) {
                 servicesEntity = new ServicesEntity();
@@ -60,7 +63,8 @@ public class SdService {
         return servicesEntity;
     }
 
-    protected UsersEntity getUsers(){
+    //////////////////////////////////////////////////////
+    protected UsersEntity getUsersEntity(){
         if(getConnection() != null) {
             if(usersEntity== null) {
                 usersEntity = new UsersEntity();
@@ -70,6 +74,13 @@ public class SdService {
         return usersEntity;
     }
 
+    /*public boolean updateUser(User user){
+        return getUsersEntity() != null ?
+                getUsersEntity().update(user) : false;
+    }*/
+
+
+    //////////////////////////////////////////////////////
     protected UsersTypeEntity getUsersType(){
         if(getConnection() != null) {
             if(usersTypeEntity == null) {
