@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @SessionScoped
 @Named
-public class UserTypesBean implements Serializable{
+public class UsersTypeBean implements Serializable{
     private String id;
     private String description;
 
