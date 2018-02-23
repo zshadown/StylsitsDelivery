@@ -7,9 +7,24 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
    <f:view>
       <h:messages/>
-      <h:outputLabel value="Ya pueden Programar," />
+      <h:outputLabel value="id :" for="id" />
       <h:inputText value="#{login.id}" id="id"
-                   validatorMessage=""
+                   validatorMessage="Please id must have bettwen 4 and 16 characters "
+                    required="true"
+                   requiredMessage="id name cannot blank">
+         <f:validateLength minimum="4" maximum="16"   for="id"/>
+
+
+      </h:inputText>
+      <h:inputSecret value="#{login.description}" id="description"
+                     validatorMessage="Please must have a description"
+                     required="true"
+                     requiredMessage="description cannot be blank"
+        <h:inputSecret>
+
+
+           
+        </h:inputSecret>
 
    </f:view>
 </html>
