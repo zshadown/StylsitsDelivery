@@ -5,26 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-   <f:view>
-      <h:messages/>
-      <h:outputLabel value="id :" for="id" />
-      <h:inputText value="#{login.id}" id="id"
-                   validatorMessage="Please id must have bettwen 4 and 16 characters "
-                    required="true"
-                   requiredMessage="id name cannot blank">
-         <f:validateLength minimum="4" maximum="16"   for="id"/>
-
-
-      </h:inputText>
-      <h:inputSecret value="#{login.description}" id="description"
-                     validatorMessage="Please must have a description"
-                     required="true"
-                     requiredMessage="description cannot be blank"
-       <f:validateLength minimum="4" maximum="16" for="description"/>
-   <h:inputSecret>
-
-   <h:commandButton id="loginButon"
-                    value="login"
-                    action="#{login.doValidateInput}"/>
-   </h:inputSecret>
-        </html>
+<f:view>
+    <h:outputLabel value="Hello, world"/>
+</f:view>
+</html>

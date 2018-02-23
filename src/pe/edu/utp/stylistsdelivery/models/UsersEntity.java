@@ -40,4 +40,27 @@ public class UsersEntity extends BaseEntity {
     public List<User> findAll(UsersTypeEntity usersTypeEntity, DistrictsEntity districtsEntity){
         return findByCriteria(DEFAULT_SQL, usersTypeEntity, districtsEntity);
     }
+
+    public User findById(int id){
+        List<User> users = findByCriteria(DEFAULT_SQL +
+        " WHERE id = "+ String.valueOf(id), null, null);
+        return (users != null ? users.get(0) : null);
+    }
+
+    private  int updateByCriteria(String sql){
+        if (getConnection() != null){
+            try {
+                return getConnection()
+                        .createStatement()
+                        .executeUpdate(sql);
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return 0;
+    }
+
+    private boolean delete(int id){
+        return updateByCriteria("DELETE FROM users WHERE id = "+String.valueOf(id)) > 0;
+    }
 }
