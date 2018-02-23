@@ -33,10 +33,38 @@ public class UsersEntity extends BaseEntity {
                 e.printStackTrace();
             }
         }
-
         return null;
     }
 
+    private  List<User> findByCriteria1(String sql){
+        List<User> users;
+        if (getConnection() != null){
+            users = new ArrayList<>();
+            try {
+                ResultSet resultSet = getConnection()
+                        .createStatement()
+                        .executeQuery(sql);
+                while (resultSet.next()){
+                    User user = new User()
+                    .setId(resultSet.getInt("id"))
+                            .setFirstName(resultSet.getString("first_name"))
+                            .setLastName(resultSet.getString("last_name"))
+                            .setBirthday(resultSet.getDate("birthday"))
+                            .setEmail(resultSet.getString("email"))
+                            .setDni(resultSet.getInt("dni"))
+                            .setPassword(resultSet.getString("password"));
+                            /*.setUserType(resultSet.getString())
+                            .setDistrict(resultSet)*/
+                            users.add(user);
+                }
+                return users;
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+
+        return null;
+    }
     public List<User> findAll(UsersTypeEntity usersTypeEntity, DistrictsEntity districtsEntity){
         return findByCriteria(DEFAULT_SQL, usersTypeEntity, districtsEntity);
     }
@@ -44,6 +72,12 @@ public class UsersEntity extends BaseEntity {
     public User findById(int id){
         List<User> users = findByCriteria(DEFAULT_SQL +
         " WHERE id = "+ String.valueOf(id), null, null);
+        return (users != null ? users.get(0) : null);
+    }
+
+    public User findByEmail(String email){
+        List<User> users = findByCriteria1(DEFAULT_SQL +
+        " WHERE email = '" + email + "'");
         return (users != null ? users.get(0) : null);
     }
 
@@ -62,5 +96,42 @@ public class UsersEntity extends BaseEntity {
 
     private boolean delete(int id){
         return updateByCriteria("DELETE FROM users WHERE id = "+String.valueOf(id)) > 0;
+    }
+
+    private int getMaxId(){
+        String sql = "SELECT MAX(id) AS max_id FROM users";
+        if (getConnection()!=null){
+            try {
+                ResultSet resultSet = getConnection()
+                        .createStatement()
+                        .executeQuery(sql);
+                return resultSet.next() ?
+                        resultSet.getInt("max_id") : 0;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return 0;
+    }
+
+    public User create(User user){
+        if (findByEmail(user.getEmail()) == null){
+            if (getConnection() != null){
+                String sql = "INSERT INTO users(id, first_name, last_name," +
+                        "birthday, email, dni, password, user_type_id, district_id) VALUES(" +
+                        String.valueOf(getMaxId()+1) + ", '" + user.getFirstName()+"', '" +
+                        user.getLastName() + "', " + user.getBirthday() + ", '" +
+                        user.getEmail() + "', " + String.valueOf(user.getDni()) + ", '" +
+                        user.getPassword() + "', " +
+                        String.valueOf(user.getUserType().getId()) + ", " +
+                        String.valueOf(user.getDistrict().getId()) + ")";
+                int results = updateByCriteria(sql);
+                if (results>0){
+                    User user1 = new User();
+                    return user1;
+                }
+            }
+        }
+        return  null;
     }
 }
