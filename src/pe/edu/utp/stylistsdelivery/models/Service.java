@@ -6,4 +6,6 @@ public class Service {
     private double cost;
     private int time;
     private User user;
+
+    
 }
