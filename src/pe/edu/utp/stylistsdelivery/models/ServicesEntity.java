@@ -1,4 +1,4 @@
 package pe.edu.utp.stylistsdelivery.models;
 
-public class ServicesEntity {
+public class ServicesEntity extends BaseEntity {
 }

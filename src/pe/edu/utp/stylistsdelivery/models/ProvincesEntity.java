@@ -1,4 +1,4 @@
 package pe.edu.utp.stylistsdelivery.models;
 
-public class ProvincesEntity {
+public class ProvincesEntity extends BaseEntity{
 }
