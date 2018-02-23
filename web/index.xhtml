@@ -20,11 +20,11 @@
                      validatorMessage="Please must have a description"
                      required="true"
                      requiredMessage="description cannot be blank"
-        <h:inputSecret>
+       <f:validateLength minimum="4" maximum="16" for="description"/>
+   <h:inputSecret>
 
-
-           
-        </h:inputSecret>
-
-   </f:view>
-</html>
+   <h:commandButton id="loginButon"
+                    value="login"
+                    action="#{login.doValidateInput}"/>
+   </h:inputSecret>
+        </html>
