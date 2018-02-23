@@ -78,8 +78,7 @@ public class SdService {
         return getUsersEntity() != null ?
                 getUsersEntity().update(user) : false;
     }*/
-
-
+    
     //////////////////////////////////////////////////////
     protected UsersTypeEntity getUsersType(){
         if(getConnection() != null) {
