@@ -6,10 +6,11 @@ import javax.inject.Named;
 import java.io.Serializable;
 
 @SessionScoped
-@Named
+@Named (value = "login")
 public class UsersTypeBean implements Serializable{
     private String id;
     private String description;
+
 
     public String getId() {
         return id;
@@ -25,5 +26,8 @@ public class UsersTypeBean implements Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    public  String  doValidateInput(){
+        return  "succes";
     }
 }
