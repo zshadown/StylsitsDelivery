@@ -74,11 +74,13 @@ public class SdService {
         return usersEntity;
     }
 
+
     /*public boolean updateUser(User user){
         return getUsersEntity() != null ?
                 getUsersEntity().update(user) : false;
     }*/
 
+    
 
     //////////////////////////////////////////////////////
     protected UsersTypeEntity getUsersType(){
