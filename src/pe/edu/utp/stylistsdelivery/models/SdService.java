@@ -14,6 +14,7 @@ public class SdService {
     private UsersEntity usersEntity;
     private UsersTypeEntity usersTypeEntity;
 
+    /* Conecctioin con la BD MYSQLDataSource*/
     private Connection getConnection() {
         if(connection ==null){
             try {
@@ -30,7 +31,7 @@ public class SdService {
         this.connection = connection;
     }
 
-    //////////////////////////////////////////////////////
+    /* Metodo get Entity Provinces*/
     protected ProvincesEntity getProvincesEntity() {
         if(getConnection() != null) {
             if(provincesEntity == null) {
@@ -41,7 +42,7 @@ public class SdService {
         return provincesEntity;
     }
 
-    //////////////////////////////////////////////////////
+    /* Metodo get Entity Districts*/
     protected DistrictsEntity getDistrictsEntity(){
         if(getConnection() != null) {
             if(districtsEntity == null) {
@@ -52,7 +53,7 @@ public class SdService {
         return districtsEntity;
     }
 
-    //////////////////////////////////////////////////////
+    /* /* Metodo get Entity Services*/
     protected ServicesEntity getServicesEntity(){
         if(getConnection() != null) {
             if(servicesEntity == null) {
@@ -63,7 +64,7 @@ public class SdService {
         return servicesEntity;
     }
 
-    //////////////////////////////////////////////////////
+    /* Metodo get Entity Users*/
     protected UsersEntity getUsersEntity(){
         if(getConnection() != null) {
             if(usersEntity== null) {
@@ -74,13 +75,8 @@ public class SdService {
         return usersEntity;
     }
 
-    /*public boolean updateUser(User user){
-        return getUsersEntity() != null ?
-                getUsersEntity().update(user) : false;
-    }*/
 
-
-    //////////////////////////////////////////////////////
+    /* Metodo get Entity UsersType*/
     protected UsersTypeEntity getUsersType(){
         if(getConnection() != null) {
             if(usersTypeEntity == null) {
@@ -92,4 +88,22 @@ public class SdService {
     }
 
 
+
+
+
+
+    /*metodos de update, delete, create, find de User*/
+
+     /*public boolean updateUser(User user){
+        return getUsersEntity() != null ?
+                getUsersEntity().update(user) : false;
+    }*/
+
+    /*metodos de update, delete, create, find de Province*/
+
+    /*metodos de update, delete, create, find de Distric*/
+
+    /*metodos de update, delete, create, find de Service*/
+
+    /*metodos de update, delete, create, find de UserType*/
 }
