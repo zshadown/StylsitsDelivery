@@ -40,4 +40,10 @@ public class UsersEntity extends BaseEntity {
     public List<User> findAll(UsersTypeEntity usersTypeEntity, DistrictsEntity districtsEntity){
         return findByCriteria(DEFAULT_SQL, usersTypeEntity, districtsEntity);
     }
+
+    /*public User findById(int id){
+        List<User> users = findByCriteria(DEFAULT_SQL +
+        " WHERE id = "+ String.valueOf(id));
+        return (users != null ? users.get(0) : null);
+    }*/
 }
