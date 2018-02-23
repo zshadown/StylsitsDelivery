@@ -1,6 +1,6 @@
 package pe.edu.utp.stylistsdelivery.beans;
 
-//Districts Bean
+//DistrictsBean
 public class DistrictsBean {
 
 
