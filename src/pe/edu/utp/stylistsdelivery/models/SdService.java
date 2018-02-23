@@ -9,17 +9,11 @@ import java.sql.SQLException;
 public class SdService {
     private Connection connection;
 
+    private Connection getConnection() {return connection;}
 
-    private Connection getConnection(){
-        if (connection == null){
-            try {
-                connection = ((DataSource) InitialContext
-                .doLookup("jdbc/MySQLDataSource"))
-                        .getConnection();
-            } catch (SQLException | NamingException e) {
-                e.printStackTrace();
-            }
-        }
-        return connection;
+    public void setConnection(Connection connection) {
+        this.connection = connection;
     }
+
+
 }
