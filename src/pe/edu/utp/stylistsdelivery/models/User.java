@@ -3,7 +3,7 @@ package pe.edu.utp.stylistsdelivery.models;
 import java.util.Date;
 
 public class User {
-    private int id;////dejudfeguf
+    private int id;
     private String firstName;
     private String lastName;
     private Date birthday;
