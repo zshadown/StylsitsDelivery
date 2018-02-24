@@ -104,6 +104,10 @@ public class SdService {
                 getProvincesEntity().findAll() : null;
     }
     /*Metodo update, create, delete, find de Districts*/
+    public  List<District> findAllDistricts(ProvincesEntity provincesEntity){
+        return  getDistrictsEntity() != null ?
+                getDistrictsEntity().findAll(provincesEntity) : null;
+    }
 
 
 

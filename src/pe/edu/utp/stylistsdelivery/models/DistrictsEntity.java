@@ -7,7 +7,7 @@ import java.util.List;
 
 public class DistrictsEntity extends BaseEntity {
     private static String DEFAULT_SQL = "SELECT * FROM districts";
-    
+
     private List<District> findByCriteria(String sql, ProvincesEntity provincesEntity){
         List<District> districts = new ArrayList<>();
         if (getConnection()!=null){
@@ -19,7 +19,7 @@ public class DistrictsEntity extends BaseEntity {
                     District district = new District(
                             resultSet.getInt("id"),
                             resultSet.getString("description"),
-                            null
+                            provincesEntity.findById(resultSet.getInt("id"))
                     );
                     districts.add(district);
                 }
@@ -29,6 +29,10 @@ public class DistrictsEntity extends BaseEntity {
             }
         }
         return null;
+    }
+
+    public List<District> findAll(ProvincesEntity provincesEntity){
+        return findByCriteria(DEFAULT_SQL, provincesEntity);
     }
 
 }
