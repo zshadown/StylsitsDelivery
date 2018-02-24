@@ -40,7 +40,7 @@ public class ProvincesEntity extends BaseEntity{
         return (provinces != null && !provinces.isEmpty() ? provinces.get(0) : null);
     }
 
-    
+
 
 
 }
