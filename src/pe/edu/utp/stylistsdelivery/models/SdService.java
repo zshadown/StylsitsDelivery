@@ -5,6 +5,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 public class SdService {
     private Connection connection;
@@ -98,7 +99,10 @@ public class SdService {
     /*Metodo update, create, delete, find de UserType*/
 
     /*Metodo update, create, delete, find de Provinces*/
-
+    public List<Province> findAllProvinces() {
+        return getProvincesEntity() != null?
+                getProvincesEntity().findAll() : null;
+    }
     /*Metodo update, create, delete, find de Districts*/
 
     /*Metodo update, create, delete, find de Services*/
