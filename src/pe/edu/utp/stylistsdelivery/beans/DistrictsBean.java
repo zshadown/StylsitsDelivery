@@ -38,8 +38,6 @@ public class DistrictsBean implements Serializable {
     public void setProvince(Province province) {
         this.province = province;
     }
-    public String dovalidateInput(){
-        if (!"sample".equals(id) ) return "error";
-    }
+
 
 }
