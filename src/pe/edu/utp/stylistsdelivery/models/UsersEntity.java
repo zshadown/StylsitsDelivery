@@ -14,8 +14,7 @@ public class UsersEntity extends BaseEntity {
                 ResultSet resultSet = getConnection()
                         .createStatement()
                         .executeQuery(sql);
-                while (resultSet.next()){
-                    /*
+                while (resultSet.next()){/*
                     User user = new User((
                             resultSet.getInt("id"),
                             resultSet.getString("first_name"),
@@ -36,7 +35,7 @@ public class UsersEntity extends BaseEntity {
         return null;
     }
 
-    private  List<User> findByCriteria1(String sql){
+    private  List<User> findByCriteriaVar(String sql){
         List<User> users;
         if (getConnection() != null){
             users = new ArrayList<>();
@@ -52,9 +51,9 @@ public class UsersEntity extends BaseEntity {
                             .setBirthday(resultSet.getDate("birthday"))
                             .setEmail(resultSet.getString("email"))
                             .setDni(resultSet.getInt("dni"))
-                            .setPassword(resultSet.getString("password"));
-                            /*.setUserType(resultSet.getString())
-                            .setDistrict(resultSet)*/
+                            .setPassword(resultSet.getString("password"));/*
+                            .setUserType(resultSet.getInt("user_type_id"))
+                            .setDistrict(resultSet.)*/
                             users.add(user);
                 }
                 return users;
@@ -62,9 +61,9 @@ public class UsersEntity extends BaseEntity {
                 e.printStackTrace();
             }
         }
-
         return null;
     }
+
     public List<User> findAll(UsersTypeEntity usersTypeEntity, DistrictsEntity districtsEntity){
         return findByCriteria(DEFAULT_SQL, usersTypeEntity, districtsEntity);
     }
@@ -76,7 +75,7 @@ public class UsersEntity extends BaseEntity {
     }
 
     public User findByEmail(String email){
-        List<User> users = findByCriteria1(DEFAULT_SQL +
+        List<User> users = findByCriteriaVar(DEFAULT_SQL +
         " WHERE email = '" + email + "'");
         return (users != null ? users.get(0) : null);
     }
